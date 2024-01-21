@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escolha de Músicas para o Domingo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #6495ED;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            color: #fff;
+        }
+
+        h2 {
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #resultado {
+            margin-top: 20px;
+        }
+
+        @media only screen and (max-width: 600px) {
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Bem-vindo à Escolha de Músicas para o Domingo!</h2>
+
+    <p>Esse domingo terá Santa Ceia?</p>
+    <button onclick="escolherMusicas('sim')">Sim</button>
+    <button onclick="escolherMusicas('nao')">Não</button>
+
+    <div id="resultado"></div>
+
+    <script>
+        var lista1 = ["So tenho a ti", "Quero louvar-te", "Maranata", "Teu reino", "Ele é exaltado", "Pra sempre","jesus em tua presença", "Perdao e Graça", "Poder pra salvar", "Porque Ele vive", "Sobre as águas", "Te louvarei", "Eu me rendo", "Deus é Deus", "Santo espiríto", "Canta minh'Alma", "Tu és Santo, poderoso", "Vim para adorar-te", "Meu respirar", "Consagração", "Me Derramar", "Qauo Grande é meu Deus", "Quebrantado", "Consagração", "Vem, esta é a hora","Canção do apocalipse", "Teu santo nome","Oh quao lindo esse nome é","Todavia me alegrarei","isaias 53","Eu te louvarei meu bom jesus", "Alfa e Omega", "Diante da Cruz", "Aclame ao senhor", "Grande é o senhor", "Lugar seguro", "Pai nosso", "Teu amor nao falha", "Yeshua- Fernandinho", "A ele a gloria", "Caminho no deserto", "Eu sou teu", "Bondade de Deus", "nao ha amor igual","é o teu povo","Maravilhosa Graça", "Ao pé da cruz", "Ainda que a figueira", "há um rio","Se nao forp ra te adorar", "in memorian", "Poderoso Deus", "Diante de ti", "Ajuntamento","Estrela da manhã","Me rendo a ti", "Tu és Soberano", "Seja engrandecido","Vitoria no deserto", "Maravilhoso és","Te agradeço por me libertar e salvar","Manancial","Improvavel, mas escolhido","Teu reino","Me ama","Jesus, o Plano perfeito","Tu és tremendo, Deus","Maravilhosa graça que perdido me encontrou","Ao unico/louvor ao rei"];
+        var lista2 = ["Sonda-me", "liberta-me de mim", "Me ama"];
+        var lista3 = ["Vinho e pao", "corpo e familia", "nada alem do sangue", "Alto preço"];
+
+        function escolherMusicas(resposta) {
+            if (resposta !== 'sim' && resposta !== 'nao') {
+                alert('Por favor, selecione "Sim" ou "Não".');
+                return;
+            }
+
+            var musicas_aleatorias1 = lista1.sort(() => Math.random() - 0.5).splice(0, 2);
+            var musicas_aleatorias2 = lista2.sort(() => Math.random() - 0.5).splice(0, 1);
+            var musicas_aleatorias3 = lista3.sort(() => Math.random() - 0.5).splice(0, 1);
+
+            var resultado = "";
+
+            if (resposta === "sim") {
+                resultado = `
+                    <p>As músicas escolhidas foram: ${musicas_aleatorias1.join(", ")}</p>
+                    <p>A música da contrição: ${musicas_aleatorias2.join(", ")}</p>
+                    <p>A música da Ceia será: ${musicas_aleatorias3.join(", ")}</p>`;
+            } else if (resposta === "nao") {
+                resultado = `
+                    <p>As músicas escolhidas foram: ${musicas_aleatorias1.join(", ")}</p>
+                    <p>A música da contrição: ${musicas_aleatorias2.join(", ")}</p>`;
+            }
+
+            document.getElementById("resultado").innerHTML = resultado;
+        }
+    </script>
+
+</body>
+</html>
